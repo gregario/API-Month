@@ -8,6 +8,6 @@ import requests
 import json 
 
 url = "https://staging-developer.citymapper.com/api/1/traveltime/"
-payload = {'startcoord': '51.4988199,-0.1813686', 'endcoord': '51.560117,-0.0722408','time_type':'arrival','key':'INSERTKEYHERE'}
+payload = {'startcoord': '51.4618199,-0.1793686', 'endcoord': '51.560117,-0.0722408','time_type':'arrival','key':'INSERTKEY'}
 r = requests.get(url, params=payload).json()
 print(r['travel_time_minutes'])
