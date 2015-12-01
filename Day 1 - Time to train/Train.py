@@ -1,7 +1,8 @@
-### Program to check how long it will take me to get to work.
-### Greg Jackson 1/12/15 
-### Twitter @gr3gario | github gregario
-### Day one of the Month of API
+# -*- coding: utf-8 -*-
+# Program to check how long it will take me to get to work
+# Greg Jackson 1st dev 2015
+# Twitter @gr3gario or github gregario
+# Day one of the Month of API
 
 import requests
 import json 
