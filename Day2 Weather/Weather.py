@@ -6,9 +6,12 @@
 
 import requests
 import json 
+import sys # needed to pass arguments from command line 
 
-country= 'uk'
-location = 'London'
+
+
+country=  str(sys.argv[1])
+location = str(sys.argv[2])
 url = "http://api.wunderground.com/api/2bd1140d98066169/conditions/q/"+str(country)+"/"+str(location)+".json"
 
 r = requests.get(url).json()
