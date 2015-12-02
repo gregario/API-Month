@@ -12,7 +12,7 @@ import sys # needed to pass arguments from command line
 
 country=  str(sys.argv[1])
 location = str(sys.argv[2])
-url = "http://api.wunderground.com/api/2bd1140d98066169/conditions/q/"+str(country)+"/"+str(location)+".json"
+url = "http://api.wunderground.com/api/[INSERTAPIKEY]/conditions/q/"+str(country)+"/"+str(location)+".json"
 
 r = requests.get(url).json()
 print("The current wind speed (mph) is: "+ str(r['current_observation']['wind_mph']))
