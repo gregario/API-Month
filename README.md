@@ -3,3 +3,6 @@ These should take 30/60 minutes to write up and document and I'm starting with a
 
 The projects will aim to be functional, simple and sometimes silly. 
 I like python so just deal with it. 
+
+Check out my write up on the project here. 
+http://thebedlab.com/2015/11/30/api-month/
