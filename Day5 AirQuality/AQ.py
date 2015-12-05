@@ -9,9 +9,13 @@ import json
 import sys # needed to pass arguments from command line 
 
 url = "http://api.erg.kcl.ac.uk/AirQuality/Information/MonitoringSites/GroupName=All/JSON" # Gives all units in London for AQ
-q = requests.get(url).json() # Make a request to the TFL API for data
-r = json.dumps(q)
-print str(q['Sites']['Site'])
+r = requests.get(url).json() # Make a request to the TFL API for data
+
+q = r['Sites']['Site'] # This extracts the list from the JSON object
+
+for key in q:
+	print key ['@SiteCode']
+
 #aq = []
 # So I'm going to make 4 lists, of name, sensor ID, lat, lng. I would be cleaner to make a list of JSON objects but screw it. 
 #for key in r: # the returned object is a list with nested JSON objects inside each list. So you need to iterate through the list and do operations on each object separately
