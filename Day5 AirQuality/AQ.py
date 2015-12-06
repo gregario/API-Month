@@ -1,25 +1,32 @@
-# -*- coding: utf-8 -*-
-# Find Local Air quality data in your area
-# Greg Jackson 5st dev 2015
-# Twitter @gr3gario or github gregario
-# Day Five of the Month of API
-
 import requests
 import json 
-import sys # needed to pass arguments from command line 
 
-url = "http://api.erg.kcl.ac.uk/AirQuality/Information/MonitoringSites/GroupName=All/JSON" # Gives all units in London for AQ
-r = requests.get(url).json() # Make a request to the TFL API for data
 
-q = r['Sites']['Site'] # This extracts the list from the JSON object
+url = "http://api.erg.kcl.ac.uk/AirQuality/Data/SiteSpecies/SiteCode=IS2/SpeciesCode=NO2/StartDate=04-12-15/EndDate=05-12-15/Json" # Gives data in closest AQ monitor
+r = requests.get(url).json() # Make a request to the LAQN API for data
 
-for key in q:
-	print key ['@SiteCode']
+rLoop = r['RawAQData']['Data'] # You got to define this here as you can't nest it below. the for loop below only works for the list embedded in the JSON object
+AQugm3 = [] # A list to store the readins
 
-#aq = []
-# So I'm going to make 4 lists, of name, sensor ID, lat, lng. I would be cleaner to make a list of JSON objects but screw it. 
-#for key in r: # the returned object is a list with nested JSON objects inside each list. So you need to iterate through the list and do operations on each object separately
-#ß	print key['Site']['@SiteCode'] # Adds expected arrival time from each train data structure to the time list
 
-#print aq[0,1]
-#print str(r['Sites']['@SiteCode'])
+for key in rLoop:
+	AQugm3temp = key['@Value'] # This loops through each data packet in the list and pulls out our relevant datapoint
+	try: # A try catch is included here as there are blank datapoints returned from the LAQN API that would mess this up occasionally if there wasn't a catch in place
+		AQugm3temp = float(AQugm3temp) # Converts from a string to a float so we can perform operations on it
+		AQugm3.append(AQugm3temp) # Adds output to AQugm3 variable
+	# Catches exceptions
+	except:
+		print 'error in parsing, oops'
+		pass
+
+# Really simple averages. Sums all elements in the list and divides by the length of the list 
+average = sum(AQugm3) / float(len(AQugm3))
+average = round(average,2)
+# This is an EU defined goal for NO2 in the city. I figure if our daily average is below this we're doing well. Its more to give context to the number.
+goal = 40.0 
+
+# Simple check to give context to the number. 
+if average < goal:
+	print "Hurray! The air quality today is less than the yearly average target of 40 ug/m3 NO2 target in the UK and reads " +str(average)+ " ug/m3"
+elif average > goal: 
+	print "Unfortunately the air quality today is more than the yearly average target of 40 ug/m3 NO2 in the UK and reads " + str(average)+ " ug/m3"

@@ -4,8 +4,4 @@
 # Twitter @gr3gario or github gregario
 # Day Five of the Month of API
 
-Bit of background on this one. I decided to do something a bit more abitious today. Since I now have the basic building blocks of data for getting and 
-manipulating JSON API data I thought I would put it to the test for something more than one localised test. 
-So today I'm going to build something chunkier. I have some knowledge of the London Air Quality Array by kings college. Its a cool system. 
-It gives free open access to AQ data from London sources. I want to build an app that if you put in a post code in London it finds the nearest AQ monitor
-From the list and returns its air quality data. 
+So I've come across the London Air Quality network before. They have a great system of monitors across the UK and have an API to call them easily. I thought it could be a good piece of data for the decision matrix around my cycle/tube debate for home. So today I will write a script that calls my local station and finds out the air quality from my area. 
