@@ -1,6 +1,5 @@
-# -*- coding: utf-8 -*-
 # Find Local Air quality data in your area
-# Greg Jackson 5st dev 2015
+# Greg Jackson 5th dec 2015
 # Twitter @gr3gario or github gregario
 # Day Five of the Month of API
 
