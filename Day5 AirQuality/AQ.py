@@ -1,3 +1,7 @@
+#coding: utf-8
+# Day 5 of month of API
+# Looking at local air quality data and what the last 24 hours have been like in your local area
+# Greg Jackson 05/12/15 gr3gario on twitter ang gregario on github
 import requests
 import json 
 
