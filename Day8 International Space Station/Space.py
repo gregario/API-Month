@@ -73,7 +73,7 @@ def onBoard():
 			
 			for key in astro:
 				print key
-			print "Greg Jackson"
+	
 			break
 		except: 
 			attempts +=1
@@ -92,7 +92,7 @@ def GPStoadd(p0):
 		try:
 			r = requests.get(url).json()
 			s = r['results']
-			if not s:
+			if not s: # This is kind of cheating, I'm assuming if google doesn't have an address for the GPS its over the ocean
 				address.append("the Ocean")
 			else:	
 				for key in s: 
@@ -125,8 +125,8 @@ def currentLoc():
 
 	return GPStoadd(latlng)
 
-print " "
-print "========================================================================"
+print " " # There's probably a more elegant way of doing this but meh
+print "========================================================================" 
 print "The international space station is currently over " +str(currentLoc()) 
 print " "
 onBoard()
