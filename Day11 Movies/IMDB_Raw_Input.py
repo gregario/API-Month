@@ -8,13 +8,14 @@ import sys
 import time
 
 imdb_list  =[] # Holds all the movie and TV inputs 
-imdb_float =[] #
+imdb_float =[] # Holds the show ratings 
 print "------------------------------------"
 print "Add as many shows as you would like"
 print "type f to finish"
 print "------------------------------------"
 timing = True
 
+# This is a nice change to my usual way of getting inputs, much cleaner than the sys.argv() option
 while timing:
 	x = (raw_input('Add a show '))
 	if str(x) is "f":
@@ -22,6 +23,7 @@ while timing:
 	else:
 		imdb_list.append(x)
 
+# Loops through the inputted movie or TV list and returns the ratings
 for key in imdb_list:
 	new_str = key.replace(" ","+")
 	url = 'http://www.omdbapi.com/?t=' +new_str+ '&y=&plot=short&r=json'
@@ -31,5 +33,6 @@ for key in imdb_list:
 	print s
 	print 'The show {0} has the imdb score {1}'.format(key,s)
 
+# Calculates the total rating amount
 output = sum(imdb_float)
 print "The total  imdb score is %f" %output
